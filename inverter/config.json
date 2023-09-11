@@ -3,7 +3,7 @@
         "version": 2,
         "flow": [
             "Yosys.Synthesis",
-            "Misc.LoadBaseSDC",
+            "OpenROAD.CheckSDCFiles",
             "OpenROAD.Floorplan",
             "OpenROAD.TapEndcapInsertion",
             "OpenROAD.GeneratePDN",
