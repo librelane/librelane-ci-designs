@@ -9,7 +9,7 @@
     "FP_PDN_VOFFSET": 0,
     "FP_PDN_VPITCH": 30,
     "FP_PDN_CHECK_NODES": false,
-    "BASE_SDC_FILE": "dir::base.sdc",
+    "FALLBACK_SDC_FILE": "dir::base.sdc",
     "PL_TARGET_DENSITY": 0.35,
     "DPL_CELL_PADDING": 0,
     "CLOCK_PERIOD": 100,
