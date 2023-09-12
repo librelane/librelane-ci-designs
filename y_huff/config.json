@@ -3,8 +3,8 @@
     "VERILOG_FILES": "dir::src/y_huff.v",
     "CLOCK_PORT": "clk",
     "CLOCK_NET": "clk",
-    "GPL_CELL_PADDING": 4,
-    "DPL_CELL_PADDING": 4,
+    "GPL_CELL_PADDING": 2,
+    "DPL_CELL_PADDING": 2,
     "FP_CORE_UTIL": 25,
     "QUIT_ON_SYNTH_CHECKS": false,
     "pdk::sky130*": {
