@@ -3,8 +3,9 @@
     "VERILOG_FILES": "dir::src/*.v",
     "CLOCK_PORT": "i_clk",
     "CLOCK_NET": "i_clk",
-    "GPL_CELL_PADDING": 2,
-    "DPL_CELL_PADDING": 2,
+    "GPL_CELL_PADDING": 0,
+    "DPL_CELL_PADDING": 0,
+    "PL_TARGET_DENSITY_PCT": 60,
     "pdk::sky130*": {
         "FP_CORE_UTIL": 30,
         "CLOCK_PERIOD": 18.86,
