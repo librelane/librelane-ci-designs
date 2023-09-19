@@ -1,0 +1,14 @@
+{
+    "meta": {
+        "version": 2,
+        "flow": [
+            "Verilator.Lint",
+            "Checker.LintErrors",
+            "Yosys.Synthesis"
+        ]
+    },
+    "DESIGN_NAME": "latch_bad",
+    "VERILOG_FILES": "dir::latch.v",
+    "CLOCK_PORT": "clk",
+    "LINTER_ERROR_ON_LATCH": false
+}
