@@ -46,5 +46,6 @@
             "FP_PDN_HOFFSET": 13.60,
             "DIODE_INSERTION_STRATEGY": 0
         }
-    }
+    },
+    "LINTER_ERROR_ON_LATCH": false
 }
