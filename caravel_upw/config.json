@@ -116,5 +116,6 @@
     "MAGIC_DEF_LABELS": false,
     "QUIT_ON_SYNTH_CHECKS": false,
     "MAGIC_DRC_USE_GDS": true,
-    "RUN_LINTER": false
+    "RUN_LINTER": false,
+    "RUN_POST_GRT_RESIZER_TIMING": false
 }
