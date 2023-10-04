@@ -83,5 +83,5 @@
     "QUIT_ON_MAGIC_DRC": false,
     "RUN_LINTER": false,
     "RUN_POST_GRT_RESIZER_TIMING": false,
-    "RUN_POST_GRT_REPAIR_DESIGN": false
+    "RUN_POST_GRT_DESIGN_REPAIR": false
 }
