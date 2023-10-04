@@ -1,0 +1,13 @@
+{
+    "meta": {
+        "version": 2,
+        "flow": "VHDLClassic"
+    },
+    "DESIGN_NAME": "leds",
+    "VHDL_FILES": "dir::*.vhdl",
+    "CLOCK_PERIOD": 10,
+    "CLOCK_PORT": "clk",
+    "FP_PDN_VOFFSET": 7,
+    "FP_PDN_HOFFSET": 7,
+    "FP_PDN_SKIPTRIM": true
+}
