@@ -22,7 +22,6 @@
     "DIE_AREA": "0 0 300 300",
     "MACROS": {
         "spm": {
-            "module": "spm",
             "instances": {
                 "spm_inst_0": {
                     "location": [
