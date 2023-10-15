@@ -14,5 +14,6 @@
             "CLOCK_PERIOD": 38,
             "PL_RESIZER_HOLD_SLACK_MARGIN": 0.25
         }
-    }
+    },
+    "LINTER_ERROR_ON_LATCH": false
 }
