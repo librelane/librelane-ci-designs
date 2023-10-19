@@ -4,6 +4,8 @@
     "CLOCK_PORT": "clk",
     "CLOCK_NET": "clk",
     "FP_CORE_UTIL": 15,
+    "RUN_POST_GRT_RESIZER_TIMING": true,
+    "RUN_POST_GRT_DESIGN_REPAIR": true,
     "pdk::sky130*": {
         "SYNTH_MAX_FANOUT": 8,
         "scl::sky130_fd_sc_hd": {
