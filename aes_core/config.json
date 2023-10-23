@@ -8,7 +8,7 @@
     "DPL_CELL_PADDING": 4,
     "RUN_POST_GRT_RESIZER_TIMING": true,
     "RUN_POST_GRT_DESIGN_REPAIR": true,
-    "PL_TARGET_DENSITY": 0.4,
+    "PL_TARGET_DENSITY": 0.38,
     "pdk::sky130*": {
         "SYNTH_MAX_FANOUT": 6,
         "FP_CORE_UTIL": 25,
