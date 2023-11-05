@@ -1,0 +1,30 @@
+{
+    "meta": {
+        "version": 2,
+        "flow": [
+            "Yosys.Synthesis",
+            "OpenROAD.CheckSDCFiles",
+            "OpenROAD.Floorplan",
+            "OpenROAD.TapEndcapInsertion",
+            "OpenROAD.GeneratePDN",
+            "OpenROAD.IOPlacement",
+            "OpenROAD.GlobalPlacement",
+            "OpenROAD.RepairDesign",
+            "OpenROAD.DetailedPlacement",
+            "OpenROAD.GlobalRouting",
+            "OpenROAD.DetailedRouting",
+            "OpenROAD.FillInsertion"
+        ]
+    },
+    "DESIGN_NAME": "spm",
+    "VERILOG_FILES": "dir::src/*.v",
+    "CLOCK_PERIOD": 10,
+    "CLOCK_PORT": "clk",
+    "FP_PDN_VOFFSET": 7,
+    "FP_PDN_HOFFSET": 7,
+    "EXTRA_VERILOG_MODELS": "dir::dummy_doubleheight.bb.v",
+    "EXTRA_LEFS": "dir::dummy_doubleheight.lef",
+    "EXTRA_SITES": [
+        "unithddbl"
+    ]
+}

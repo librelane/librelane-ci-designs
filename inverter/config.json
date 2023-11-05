@@ -16,15 +16,22 @@
             "OpenROAD.FillInsertion",
             "Magic.StreamOut",
             "Magic.DRC",
+            "Checker.MagicDRC",
             "Magic.SpiceExtraction",
-            "Netgen.LVS"
+            "Netgen.LVS",
+            "Checker.LVS"
         ]
     },
     "DESIGN_NAME": "inverter",
     "VERILOG_FILES": "dir::src/*.v",
     "CLOCK_PORT": null,
     "FP_SIZING": "absolute",
-    "DIE_AREA": [0, 0, 34.5, 57.12],
+    "DIE_AREA": [
+        0,
+        0,
+        50,
+        50
+    ],
     "PL_TARGET_DENSITY": 0.75,
     "FP_PDN_AUTO_ADJUST": false,
     "FP_PDN_VPITCH": 25,
