@@ -13,13 +13,21 @@
     "PL_TARGET_DENSITY": 0.35,
     "DPL_CELL_PADDING": 0,
     "CLOCK_PERIOD": 100,
-    "CLOCK_PORT": "clk1 clk2",
+    "CLOCK_PORT": [
+        "clk1",
+        "clk2"
+    ],
     "RUN_CTS": false,
     "DIODE_INSERTION_STRATEGY": 0,
     "GLB_RESIZER_TIMING_OPTIMIZATIONS": false,
     "VERILOG_FILES": "dir::src/*.v",
     "FP_SIZING": "absolute",
-    "DIE_AREA": "0 0 300 300",
+    "DIE_AREA": [
+        0,
+        0,
+        300,
+        300
+    ],
     "MACROS": {
         "spm": {
             "instances": {
