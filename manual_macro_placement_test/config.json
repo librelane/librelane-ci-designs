@@ -36,7 +36,7 @@
                         10,
                         150
                     ],
-                    "orientation": "N"
+                    "orientation": "FN"
                 },
                 "spm_inst_1": {
                     "location": [
@@ -66,5 +66,6 @@
     "RUN_FILL_INSERTION": true,
     "QUIT_ON_SYNTH_CHECKS": false,
     "RUN_LINTER": true,
-    "USE_SYNLIG": true
+    "USE_SYNLIG": true,
+    "MAGIC_MACRO_STD_CELL_SOURCE": "macro"
 }
