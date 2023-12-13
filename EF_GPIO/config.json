@@ -1,0 +1,14 @@
+{
+    "DESIGN_NAME": "EF_GPIO8",
+    "VERILOG_FILES": ["dir::./src/hdl/rtl/EF_GPIO8.v"],
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10,
+    "FP_IO_MODE": "annealing",
+    "FP_IO_MIN_DISTANCE": 1.5,
+    "PL_TARGET_DENSITY": 0.77,
+    "BOTTOM_MARGIN_MULT": 2,
+    "FP_IO_VLENGTH": 2,
+    "FP_IO_HLENGTH": 2,
+    "TOP_MARGIN_MULT": 2,
+    "FP_CORE_UTIL": 50
+}

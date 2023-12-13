@@ -1,0 +1,44 @@
+{
+  "DESIGN_NAME": "MS_CLK_RST",
+  "DESIGN_IS_CORE": false,
+  "VERILOG_FILES": [
+    "dir::src/hdl/rtl/MS_CLK_RST.v",
+    "dir::src/hdl/rtl/por_rosc.v",
+    "dir::src/hdl/rtl/clkmux.v",
+    "dir::src/hdl/rtl/rst_sync.v"
+  ],
+  "RUN_LINTER": false,
+  "SYNTH_READ_BLACKBOX_LIB": true,
+  "SYNTH_EXCLUSION_CELL_LIST": "dir::no_synth.cells",
+  "CLOCK_PERIOD": 10,
+  "CLOCK_PORT": "",
+  "FP_SIZING": "relative",
+  "FP_CORE_UTIL": 50,
+  "FP_PDN_AUTO_ADJUST": true,
+  "FP_PDN_VPITCH": 30,
+  "FP_PDN_HPITCH": 30,
+  "MAX_TRANSITION_CONSTRAINT": 1.5,
+  "MAX_FANOUT_CONSTRAINT": 16,
+  "RUN_CTS": true,
+  "PL_RESIZER_DESIGN_OPTIMIZATIONS": true,
+  "PL_RESIZER_TIMING_OPTIMIZATIONS": true,
+  "GLB_RESIZER_DESIGN_OPTIMIZATIONS": true,
+  "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
+  "DESIGN_REPAIR_BUFFER_INPUT_PORTS": false,
+  "PL_TARGET_DENSITY_PCT": 56,
+  "MAGIC_DEF_LABELS": false,
+  "SYNTH_ABC_BUFFERING": false,
+  "RUN_HEURISTIC_DIODE_INSERTION": true,
+  "HEURISTIC_ANTENNA_THRESHOLD": 110,
+  "GRT_REPAIR_ANTENNAS": false,
+  "VDD_NETS": [
+    "vccd1"
+  ],
+  "GND_NETS": [
+    "vssd1"
+  ],
+  "PNR_SDC_FILE": "dir::base.sdc",
+  "SIGNOFF_SDC_FILE": "dir::signoff.sdc",
+  "RUN_CVC": true,
+  "RSZ_DONT_TOUCH_RX": "dly|fb|clk_div|shift_reg|clkinv|clkdlybuf|cmp|rst_sync|clkbuf"
+}

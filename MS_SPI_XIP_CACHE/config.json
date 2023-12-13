@@ -1,0 +1,11 @@
+{
+    "DESIGN_NAME": "MS_SPI_XIP_CACHE_ahbl",
+    "VERILOG_FILES": [
+        "dir::./src/hdl/rtl/MS_SPI_XIP_CACHE.v",
+        "dir::./src/hdl/rtl/bus_wrappers/MS_SPI_XIP_CACHE_ahbl.v"
+    ],
+    "CLOCK_PORT": "HCLK",
+    "CLOCK_PERIOD": 10,
+    "FP_IO_MODE": "annealing",
+    "FP_CORE_UTIL": 65
+}

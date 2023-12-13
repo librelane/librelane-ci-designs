@@ -1,0 +1,9 @@
+{
+    "DESIGN_NAME": "MS_DMAC_AHBL",
+    "VERILOG_FILES": ["dir::./src/hdl/rtl/MS_DMAC_AHBL.v"],
+    "CLOCK_PORT": "HCLK",
+    "CLOCK_PERIOD": 10,
+    "FP_IO_MODE": "annealing",
+    "FP_IO_MIN_DISTANCE": 2,
+    "FP_CORE_UTIL": 70
+}

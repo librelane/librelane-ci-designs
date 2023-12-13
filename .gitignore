@@ -12,3 +12,6 @@
 */run_*.tcl
 */matrix_*.json
 .ipynb_checkpoints
+
+.ip-root/*
+!.ip-root/dependencies.json
