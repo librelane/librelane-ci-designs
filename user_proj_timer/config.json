@@ -11,6 +11,7 @@
     "FP_SIZING": "absolute",
     "DIE_AREA": "0 0 200 3500",
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "QUIT_ON_UNMATCHED_IO": 0,
     "MAX_TRANSITION_CONSTRAINT": 1.0,
     "MAX_FANOUT_CONSTRAINT": 16,
     "PL_TARGET_DENSITY": 0.55,
