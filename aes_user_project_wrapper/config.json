@@ -27,7 +27,9 @@
                     "orientation": "N"
                 }
             },
-            "nl": ["dir::./gl/aes_example.v"],
+            "nl": [
+                "dir::./gl/aes_example.v"
+            ],
             "spef": {
                 "min_*": [
                     "dir::./spef/multicorner/aes_example.min.spef.gz"
@@ -99,5 +101,15 @@
     "RT_MAX_LAYER": "met4",
     "DIE_AREA": "0 0 2920 3520",
     "FP_DEF_TEMPLATE": "dir::fixed_dont_change/user_project_wrapper.def",
-    "MAGIC_LEF_WRITE_USE_GDS": 0
+    "MAGIC_LEF_WRITE_USE_GDS": 0,
+    "VSRC_LOC_FILES": {
+        "vccd1": "dir::vsrc/upw_vccd1_vsrc.loc",
+        "vccd2": "dir::vsrc/upw_vccd2_vsrc.loc",
+        "vdda1": "dir::vsrc/upw_vdda1_vsrc.loc",
+        "vdda2": "dir::vsrc/upw_vdda2_vsrc.loc",
+        "vssa1": "dir::vsrc/upw_vssa1_vsrc.loc",
+        "vssa2": "dir::vsrc/upw_vssa2_vsrc.loc",
+        "vssd1": "dir::vsrc/upw_vssd1_vsrc.loc",
+        "vssd2": "dir::vsrc/upw_vssd2_vsrc.loc"
+    }
 }
