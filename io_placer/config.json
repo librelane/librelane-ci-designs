@@ -48,10 +48,6 @@
     "CLOCK_PORT": "user_clock2",
     "CLOCK_NET": "mprj1.clk",
     "CLOCK_PERIOD": "10",
-    "PDN_MACRO_CONNECTIONS": [
-        "mprj* vccd1 vssd1 vccd1 vssd1",
-        "prj2 vccd2 vssd2 vccd2 vssd2"
-    ],
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "VERILOG_FILES_BLACKBOX": [
         "dir::src/defines.v",
