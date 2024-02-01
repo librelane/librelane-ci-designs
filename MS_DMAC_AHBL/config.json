@@ -5,5 +5,6 @@
     "CLOCK_PERIOD": 10,
     "FP_IO_MODE": "annealing",
     "FP_IO_MIN_DISTANCE": 2,
-    "FP_CORE_UTIL": 70
+    "FP_CORE_UTIL": 70,
+    "PL_TARGET_DENSITY_PCT": 80
 }
