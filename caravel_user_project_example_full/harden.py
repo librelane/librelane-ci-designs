@@ -1,106 +1,95 @@
 #!/usr/bin/env python3
-import json
+# Copyright 2024 Efabless Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 import os
+import json
+import click
+import shutil
+from openlane.common.misc import mkdirp
 
-from openlane.flows.classic import Classic
+from openlane.flows import Flow
+from openlane.config import Macro
 
-DIRNAME = os.path.dirname(os.path.realpath(__file__))
-os.chdir(DIRNAME)
-example_config = json.load(open("./src/openlane/user_proj_example/config.json"))
-run_dir = "./runs/CI/user_proj_example"
-example_overrides = {
-    "BASE_SDC_FILE": os.path.abspath("./base_user_proj_example.sdc"),
-    "RUN_IRDROP_REPORT": False,
-}
-for key in example_overrides.keys():
-    example_config[key] = example_overrides[key]
+__dir__ = os.path.dirname(os.path.realpath(__file__))
 
-example_flow = Classic(
-    {
-        **example_config,
+
+@click.command(context_settings={"ignore_unknown_options": True})
+@click.option("--pdk-root", type=click.Path(dir_okay=True, file_okay=False))
+@click.option("--run-tag", type=click.Path(dir_okay=True, file_okay=False))
+@click.argument("args", nargs=-1, type=click.UNPROCESSED)
+def main(
+    pdk_root,
+    run_tag,
+    args,
+):
+    TargetFlow = Flow.factory.get("Classic")
+
+    upe_dir = os.path.join(__dir__, "src", "openlane", "user_proj_example")
+    upe_config_path = os.path.join(upe_dir, "config.json")
+    upe_config = json.load(open(upe_config_path))
+    upe_config.update(
         **{
-            "meta": {"version": 0},
-        },
-    },
-    design_dir="./src/openlane/user_proj_example",
-    pdk="sky130A",
-)
-example_flow.start(_force_run_dir=run_dir)
-
-wrapper_config = json.load(open("./src/openlane/user_project_wrapper/config.json"))
-wrapper_overrides = {
-    "BASE_SDC_FILE": "./base_user_project_wrapper.sdc",
-    "MACROS": {
-        "user_proj_example": {
-            "gds": [
-                os.path.abspath(
-                    os.path.join(run_dir, "final", "gds", "user_proj_example.gds")
-                )
-            ],
-            "lef": [
-                os.path.abspath(
-                    os.path.join(run_dir, "final", "lef", "user_proj_example.lef")
-                )
-            ],
-            "instances": {"mprj": {"location": [60, 15], "orientation": "N"}},
-            "nl": [
-                os.path.abspath(
-                    os.path.join(run_dir, "final", "pnl", "user_proj_example.pnl.v")
-                )
-            ],
-            "spef": {
-                "min_*": [
-                    os.path.abspath(
-                        os.path.join(
-                            run_dir,
-                            "final",
-                            "spef",
-                            "min_",
-                            "user_proj_example.min.spef",
-                        )
-                    )
-                ],
-                "nom_*": [
-                    os.path.abspath(
-                        os.path.join(
-                            run_dir,
-                            "final",
-                            "spef",
-                            "nom_",
-                            "user_proj_example.nom.spef",
-                        )
-                    )
-                ],
-                "max_*": [
-                    os.path.abspath(
-                        os.path.join(
-                            run_dir,
-                            "final",
-                            "spef",
-                            "max_",
-                            "user_proj_example.max.spef",
-                        )
-                    )
-                ],
-            },
+            "BASE_SDC_FILE": os.path.join(__dir__, "base_user_proj_example.sdc"),
+            "RUN_IRDROP_REPORT": False,
+            "meta": {"version": 1},
         }
-    },
-}
-del wrapper_config["EXTRA_GDS_FILES"]
-del wrapper_config["EXTRA_SPEFS"]
-del wrapper_config["EXTRA_LIBS"]
-del wrapper_config["EXTRA_LEFS"]
-del wrapper_config["VERILOG_FILES_BLACKBOX"]
-run_dir = "./runs/CI/user_project_wrapper"
-wrapper_flow = Classic(
-    {
-        **wrapper_config,
-        **wrapper_overrides,
+    )
+
+    upe_flow = TargetFlow(
+        upe_config,
+        design_dir=upe_dir,
+        pdk="sky130A",
+        pdk_root=pdk_root,
+    )
+    upe_state_out = upe_flow.start(tag=run_tag)
+
+    user_proj_example = Macro.from_state(upe_state_out)
+
+    # TODO: Fix these hacks
+    user_proj_example.nl = [x.replace(".nl.v", ".pnl.v") for x in user_proj_example.nl]
+    user_proj_example.lib = []
+    
+    user_proj_example.instantiate("mprj", (60, 15))
+
+    upw_dir = os.path.join(__dir__, "src", "openlane", "user_project_wrapper")
+    upw_config_path = os.path.join(upw_dir, "config.json")
+    upw_config = json.load(open(upw_config_path))
+    upw_config.update(
         **{
-            "meta": {"version": 0},
-        },
-    },
-    design_dir="./src/openlane/user_project_wrapper",
-    pdk="sky130A",
-)
-wrapper_flow.start(_force_run_dir=run_dir)
+            "BASE_SDC_FILE": os.path.join(__dir__, "base_user_project_wrapper.sdc"),
+            "MACROS": {"user_proj_example": user_proj_example},
+            "EXTRA_GDS_FILES": None,
+            "EXTRA_SPEFS": None,
+            "EXTRA_LIBS": None,
+            "EXTRA_LEFS": None,
+            "VERILOG_FILES_BLACKBOX": None,
+            "meta": {"version": 1},
+        }
+    )
+
+    upw_flow = TargetFlow(
+        upw_config,
+        design_dir=upw_dir,
+        pdk="sky130A",
+        pdk_root=pdk_root,
+    )
+    upw_flow.start(tag=run_tag)
+    
+    runs_dir = os.path.join(__dir__, "runs")
+    run_dir_final = os.path.join(runs_dir, run_tag)
+    mkdirp(runs_dir)
+    shutil.copytree(upw_flow.run_dir, run_dir_final)
+
+
+main()
