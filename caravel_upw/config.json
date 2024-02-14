@@ -59,13 +59,6 @@
                         1690
                     ],
                     "orientation": "N"
-                },
-                "mprj2": {
-                    "location": [
-                        1175,
-                        400
-                    ],
-                    "orientation": "N"
                 }
             },
             "gds": [
@@ -73,17 +66,14 @@
             ],
             "lef": [
                 "dir::macros/user_proj_example.lef"
+            ],
+            "vh": [
+                "dir::src/defines.v",
+                "dir::src/user_proj_example.v"
             ]
         },
         "user_proj_example2": {
             "instances": {
-                "mprj1": {
-                    "location": [
-                        1175,
-                        1690
-                    ],
-                    "orientation": "N"
-                },
                 "mprj2": {
                     "location": [
                         1175,
@@ -97,10 +87,13 @@
             ],
             "lef": [
                 "dir::macros/user_proj_example2.lef"
+            ],
+            "vh": [
+                "dir::src/defines.v",
+                "dir::src/user_proj_example2.v"
             ]
         }
     },
-    "EXTRA_VERILOG_MODELS": "dir::src/*.v",
     "RT_MAX_LAYER": "met4",
     "FP_PDN_CHECK_NODES": false,
     "SYNTH_ELABORATE_ONLY": true,
