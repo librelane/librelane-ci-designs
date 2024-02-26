@@ -6,6 +6,7 @@
     "GPL_CELL_PADDING": 0,
     "DPL_CELL_PADDING": 0,
     "PL_TARGET_DENSITY_PCT": 60,
+    "SYNTH_ABC_BUFFERING": true,
     "pdk::sky130*": {
         "FP_CORE_UTIL": 30,
         "CLOCK_PERIOD": 18.86,

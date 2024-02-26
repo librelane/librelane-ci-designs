@@ -8,5 +8,6 @@
     "CLOCK_PERIOD": 10,
     "FP_IO_MODE": "annealing",
     "PL_TARGET_DENSITY_PCT": 75,
-    "FP_CORE_UTIL": 65
+    "FP_CORE_UTIL": 65,
+    "SYNTH_ABC_BUFFERING": true
 }
