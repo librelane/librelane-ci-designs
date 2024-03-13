@@ -12,12 +12,6 @@
     "FP_PDN_MACRO_HOOKS": "mprj vccd2 vssd2 VPWR VGND",
     "MACROS": {
         "aes_example": {
-            "gds": [
-                "dir::./gds/aes_example.gds.gz"
-            ],
-            "lef": [
-                "dir::./lef/aes_example.lef"
-            ],
             "instances": {
                 "mprj": {
                     "location": [
@@ -27,6 +21,12 @@
                     "orientation": "N"
                 }
             },
+            "gds": [
+                "dir::./gds/aes_example.gds.gz"
+            ],
+            "lef": [
+                "dir::./lef/aes_example.lef"
+            ],
             "nl": [
                 "dir::./gl/aes_example.v"
             ],

@@ -1,0 +1,12 @@
+{
+    "meta": {
+        "version": 2,
+        "flow": [
+            "Verilator.Lint",
+            "Yosys.JsonHeader",
+            "Yosys.Synthesis"
+        ]
+    },
+    "DESIGN_NAME": "inverter",
+    "VERILOG_FILES": "dir::src/*.v"
+}
