@@ -13,25 +13,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import os
+import shutil
 import click
 
-from openlane.flows.classic import Classic
-from openlane.common import ScopedFile
+from openlane.flows import Flow
+from openlane.state import State
 from openlane.config import Macro
 from openlane.logging import options
+from openlane.common import ScopedFile, get_latest_file
 
-__dir__ = os.path.dirname(__file__)
+__dir__ = os.path.dirname(os.path.abspath(__file__))
 
 
 @click.command(context_settings={"ignore_unknown_options": True})
 @click.option("--pdk-root", type=click.Path(dir_okay=True, file_okay=False))
-@click.option("--run-tag", type=click.Path(dir_okay=True, file_okay=False))
+@click.option(
+    "--run-tag", type=click.Path(dir_okay=True, file_okay=False), required=True
+)
 @click.argument("args", nargs=-1, type=click.UNPROCESSED)
 def main(
     pdk_root,
     run_tag,
     args,
 ):
+    Classic = Flow.factory.get("Classic")
+
     options.set_condensed_mode(True)
 
     spm_v = ScopedFile(
@@ -120,12 +126,13 @@ def main(
         pdk_root=pdk_root,
     )
 
-    macro_state = macro_flow.start(tag=os.path.join(run_tag, "macro"))
-    # macro_state = State.loads(open("runs/spm/54-checker-lvs/state_out.json").read())
+    macro_state = macro_flow.start(tag=os.path.join(run_tag, "macro"), overwrite=True)
+    # latest_file = get_latest_file(f"{__dir__}/runs/{run_tag}/macro", "state_out.json")
+    # macro_state = State.loads(open(str(latest_file)).read())
 
     spm = Macro.from_state(macro_state)
-    spm.instantiate("spm_1", (150, 150))
-    spm.instantiate("spm_2", (300, 300))
+    spm.instantiate("spm_inst[0]", (150, 150))
+    spm.instantiate("spm_inst[1]", (300, 300))
 
     integration_v = ScopedFile(
         contents="""
@@ -143,27 +150,16 @@ def main(
             output y1,
             output y2
         );
-            spm spm_1 (
+            spm spm_inst[1:0] (
             `ifdef USE_POWER_PINS
                 .VPWR(VPWR),
                 .VGND(VGND),
             `endif
                 .clk(clk),
                 .rst(rstn),
-                .x(x1),
-                .a(a1),
-                .y(y1)
-            );
-            spm spm_2 (
-            `ifdef USE_POWER_PINS
-                .VPWR(VPWR),
-                .VGND(VGND),
-            `endif
-                .clk(clk),
-                .rst(rstn),
-                .x(x2),
-                .a(a2),
-                .y(y2)
+                .x({x1, x2}),
+                .a({a1, a2}),
+                .y({y1, y2})
             );
         endmodule    
         """
@@ -202,7 +198,8 @@ def main(
         pdk_root=pdk_root,
     )
 
-    integration_flow.start(tag=os.path.join(run_tag, "integration"))
+    integration_run_tag = os.path.join(run_tag, "integration")
+    integration_flow.start(tag=integration_run_tag, overwrite=True)
 
 
 if __name__ == "__main__":
