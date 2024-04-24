@@ -9,13 +9,14 @@
     "DPL_CELL_PADDING": 4,
     "FP_CORE_UTIL": 25,
     "QUIT_ON_SYNTH_CHECKS": false,
-    "CLOCK_PERIOD": 11.35,
     "pdk::sky130*": {
+        "CLOCK_PERIOD": 11.35,
         "FP_SIZING": "absolute",
         "DIE_AREA": "0 0 700 700",
         "MAX_FANOUT_CONSTRAINT": 6
     },
     "pdk::gf180mcu*": {
+        "CLOCK_PERIOD": 20,
         "MAX_FANOUT_CONSTRAINT": 10,
         "RUN_HEURISTIC_DIODE_INSERTION": false,
         "CLOCK_WIRE_RC_LAYER": "Metal2",
