@@ -13,18 +13,29 @@
     "PL_TARGET_DENSITY": 0.35,
     "DPL_CELL_PADDING": 0,
     "CLOCK_PERIOD": 100,
-    "CLOCK_PORT": ["clk1", "clk2"],
+    "CLOCK_PORT": [
+        "clk1",
+        "clk2"
+    ],
     "RUN_CTS": false,
     "DIODE_INSERTION_STRATEGY": 0,
     "GLB_RESIZER_TIMING_OPTIMIZATIONS": false,
     "VERILOG_FILES": "dir::src/*.v",
     "FP_SIZING": "absolute",
-    "DIE_AREA": [0, 0, 300, 300],
+    "DIE_AREA": [
+        0,
+        0,
+        300,
+        300
+    ],
     "MACROS": {
         "spm": {
             "instances": {
                 "spm_inst_0": {
-                    "location": [10, 150],
+                    "location": [
+                        10,
+                        150
+                    ],
                     "orientation": "FN"
                 },
                 "spm_inst_1": {
@@ -35,9 +46,15 @@
                     "orientation": "N"
                 }
             },
-            "gds": ["dir::macros/spm/gds/spm.magic.gds"],
-            "lef": ["dir::macros/spm/lef/spm.lef"],
-            "nl": ["dir::macros/spm/nl/spm.nl.v"],
+            "gds": [
+                "dir::macros/spm/gds/spm.magic.gds"
+            ],
+            "lef": [
+                "dir::macros/spm/lef/spm.lef"
+            ],
+            "nl": [
+                "dir::macros/spm/nl/spm.nl.v"
+            ],
             "spef": {
                 "nom_*": "dir::macros/spm/spef/nom_/spm.nom.spef",
                 "min_*": "dir::macros/spm/spef/min_/spm.min.spef",
@@ -47,7 +64,6 @@
     },
     "RUN_IRDROP_REPORT": false,
     "RUN_FILL_INSERTION": true,
-    "QUIT_ON_SYNTH_CHECKS": false,
     "RUN_LINTER": true,
     "USE_SYNLIG": true,
     "MAGIC_MACRO_STD_CELL_SOURCE": "macro"

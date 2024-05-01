@@ -5,7 +5,6 @@
         "dir::rtl/user_project_wrapper.v"
     ],
     "RUN_LINTER": 0,
-    "QUIT_ON_SYNTH_CHECKS": 0,
     "ROUTING_CORES": 1,
     "CLOCK_PERIOD": 25,
     "CLOCK_PORT": "wb_clk_i",
