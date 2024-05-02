@@ -30,10 +30,12 @@ __dir__ = os.path.dirname(os.path.abspath(__file__))
 @click.option(
     "--run-tag", type=click.Path(dir_okay=True, file_okay=False), required=True
 )
+@click.option("--macro-and-integration/--integration-only", type=bool, default=True)
 @click.argument("args", nargs=-1, type=click.UNPROCESSED)
 def main(
     pdk_root,
     run_tag,
+    macro_and_integration,
     args,
 ):
     Classic = Flow.factory.get("Classic")
@@ -120,26 +122,59 @@ def main(
             "FP_PDN_HSPACING": 3.2,
             "FP_MACRO_HORIZONTAL_HALO": 20,
             "FP_MACRO_VERTICAL_HALO": 20,
+            "VDD_PIN": "power",
+            "GND_PIN": "ground",
         },
         design_dir=__dir__,
         pdk="sky130A",
         pdk_root=pdk_root,
     )
 
-    macro_state = macro_flow.start(tag=os.path.join(run_tag, "macro"), overwrite=True)
-    # latest_file = get_latest_file(f"{__dir__}/runs/{run_tag}/macro", "state_out.json")
-    # macro_state = State.loads(open(str(latest_file)).read())
+    if macro_and_integration:
+        macro_state = macro_flow.start(
+            tag=os.path.join(run_tag, "macro"), overwrite=True
+        )
+    else:
+        latest_file = get_latest_file(
+            f"{__dir__}/runs/{run_tag}/macro", "state_out.json"
+        )
+        macro_state = State.loads(open(str(latest_file)).read())
 
     spm = Macro.from_state(macro_state)
-    spm.instantiate("spm_inst[0]", (150, 150))
-    spm.instantiate("spm_inst[1]", (300, 300))
+    spm.instantiate("spm_inst[0].inst", (150, 150))
+    spm.instantiate("spm_inst[1].inst", (300, 300))
+    # spm.instantiate("spm_inst.inst", (150, 150))
 
     integration_v = ScopedFile(
         contents="""
+        module thin_wrapper(
+        `ifdef USE_POWER_PINS
+            inout vcc0,
+            inout vss0,
+        `endif
+            input clk,
+            input rst,
+            input x,
+            input[31:0] a,
+            output y 
+        );
+            spm inst(
+            `ifdef USE_POWER_PINS
+                .power(vcc0),
+                .ground(vss0),
+            `endif
+                .clk(clk),
+                .rst(rst),
+                .x(x),
+                .a(a),
+                .y(y)
+            );
+        endmodule
+        
         module dual_spm(
         `ifdef USE_POWER_PINS
-            inout VPWR,
-            inout VGND,
+            inout vcc0,
+            inout vss0,
         `endif
             input clk,
             input rstn,
@@ -150,10 +185,10 @@ def main(
             output y1,
             output y2
         );
-            spm spm_inst[1:0] (
+            thin_wrapper spm_inst[1:0] (
             `ifdef USE_POWER_PINS
-                .VPWR(VPWR),
-                .VGND(VGND),
+                .vcc0(vcc0),
+                .vss0(vss0),
             `endif
                 .clk(clk),
                 .rst(rstn),
@@ -161,6 +196,20 @@ def main(
                 .a({a1, a2}),
                 .y({y1, y2})
             );
+        /*
+            assign y2 = 1'b0;
+            thin_wrapper spm_inst (
+            `ifdef USE_POWER_PINS
+                .vcc0(vcc0),
+                .vss0(vss0),
+            `endif
+                .clk(clk),
+                .rst(rstn),
+                .x(x1),
+                .a(a1),
+                .y(y1)
+            );
+        */
         endmodule    
         """
     )
@@ -192,6 +241,8 @@ def main(
             "RUN_KLAYOUT_DRC": False,
             "RUN_KLAYOUT_STREAMOUT": False,
             "RUN_KLAYOUT_XOR": False,
+            "VDD_PIN": "vcc0",
+            "GND_PIN": "vss0",
         },
         design_dir=__dir__,
         pdk="sky130A",
