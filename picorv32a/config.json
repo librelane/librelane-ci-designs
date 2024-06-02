@@ -4,6 +4,7 @@
     "CLOCK_PORT": "clk",
     "CLOCK_NET": "clk",
     "GLB_RESIZER_TIMING_OPTIMIZATIONS": true,
+    "DESIGN_REPAIR_REMOVE_BUFFERS": true,
     "GPL_CELL_PADDING": 2,
     "DPL_CELL_PADDING": 2,
     "CLOCK_PERIOD": 24,
