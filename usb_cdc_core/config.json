@@ -13,10 +13,10 @@
         }
     },
     "pdk::gf180mcu*": {
-        "PL_RESIZER_HOLD_SLACK_MARGIN": 0.2,
+        "PL_RESIZER_HOLD_SLACK_MARGIN": 0.25,
         "DIODE_INSERTION_STRATEGY": 6,
-        "GPL_CELL_PADDING": 4,
-        "DPL_CELL_PADDING": 4,
+        "GPL_CELL_PADDING": 2,
+        "DPL_CELL_PADDING": 2,
         "FP_CORE_UTIL": 30,
         "PL_TARGET_DENSITY": 0.43
     }
