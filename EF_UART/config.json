@@ -6,5 +6,5 @@
     "CLOCK_PORT": "clk",
     "CLOCK_PERIOD": 10,
     "SIGNOFF_SDC_FILE": "dir::../.common/signoff.sdc",
-    "FP_CORE_UTIL": 70
+    "FP_CORE_UTIL": 71
 }

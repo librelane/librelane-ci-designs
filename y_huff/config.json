@@ -3,16 +3,15 @@
     "VERILOG_FILES": "dir::src/y_huff.v",
     "CLOCK_PORT": "clk",
     "CLOCK_NET": "clk",
-    "RUN_HEURISTIC_DIODE_INSERTION": true,
     "DIODE_ON_PORTS": "in",
     "GPL_CELL_PADDING": 4,
-    "DPL_CELL_PADDING": 4,
     "FP_CORE_UTIL": 25,
     "QUIT_ON_SYNTH_CHECKS": false,
     "pdk::sky130*": {
         "CLOCK_PERIOD": 11.35,
         "FP_SIZING": "absolute",
         "DIE_AREA": "0 0 700 700",
+        "RUN_HEURISTIC_DIODE_INSERTION": true,
         "MAX_FANOUT_CONSTRAINT": 6
     },
     "pdk::gf180mcu*": {
