@@ -9,5 +9,5 @@
     "FP_IO_MODE": "annealing",
     "PL_TARGET_DENSITY_PCT": 75,
     "FP_CORE_UTIL": 55,
-    "SYNTH_ABC_BUFFERING": true
+    "SYNTH_ABC_BUFFERING": false
 }
