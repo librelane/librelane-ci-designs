@@ -1,11 +1,10 @@
 {
     "DESIGN_NAME": "EF_UART",
-    "VERILOG_FILES": [
-        "dir::./src/hdl/rtl/EF_UART.v"
-    ],
+    "VERILOG_FILES": ["dir::./src/hdl/rtl/EF_UART.v"],
     "CLOCK_PORT": "clk",
     "CLOCK_PERIOD": 10,
     "SIGNOFF_SDC_FILE": "dir::../.common/signoff.sdc",
     "FP_CORE_UTIL": 70,
+    "PL_TARGET_DENSITY_PCT": 80,
     "SYNTH_STRATEGY": "AREA 1"
 }
