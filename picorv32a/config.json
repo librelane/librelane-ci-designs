@@ -14,5 +14,6 @@
         "scl::sky130_fd_sc_ms": {
             "FP_CORE_UTIL": 30
         }
-    }
+    },
+    "DRT_ANTENNA_REPAIR_ITERS": 5
 }

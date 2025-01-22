@@ -9,5 +9,6 @@
     "FP_IO_MODE": "annealing",
     "PL_TARGET_DENSITY_PCT": 75,
     "FP_CORE_UTIL": 55,
-    "SYNTH_ABC_BUFFERING": false
+    "SYNTH_ABC_BUFFERING": false,
+    "DRT_ANTENNA_REPAIR_ITERS": 5
 }
