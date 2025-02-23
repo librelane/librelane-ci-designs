@@ -1,0 +1,6 @@
+DESIGN_NAME: top
+CLOCK_PERIOD: 15
+VERILOG_FILES: dir::top.v
+meta:
+  flow:
+    - Yosys.Synthesis

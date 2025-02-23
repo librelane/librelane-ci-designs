@@ -13,14 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import os
-import shutil
 import click
 
-from openlane.flows import Flow
-from openlane.state import State
-from openlane.config import Macro
-from openlane.logging import options
-from openlane.common import ScopedFile, get_latest_file
+from librelane.flows import Flow
+from librelane.state import State
+from librelane.config import Macro
+from librelane.logging import options
+from librelane.common import ScopedFile, get_latest_file
 
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 
