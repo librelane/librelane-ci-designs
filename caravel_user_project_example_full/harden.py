@@ -16,10 +16,10 @@ import os
 import json
 import click
 import shutil
-from openlane.common.misc import mkdirp
+from librelane.common.misc import mkdirp
 
-from openlane.flows import Flow
-from openlane.config import Macro
+from librelane.flows import Flow
+from librelane.config import Macro
 
 __dir__ = os.path.dirname(os.path.realpath(__file__))
 
