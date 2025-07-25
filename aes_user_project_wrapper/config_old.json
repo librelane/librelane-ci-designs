@@ -21,6 +21,7 @@
         "dir::spef/multicorner/aes_example.nom.spef.gz",
         "dir::spef/multicorner/aes_example.max.spef.gz"
     ],
+    "KLAYOUT_CONFLICT_RESOLUTION": "SkipNewCell",
     "BASE_SDC_FILE": "dir::base_user_project_wrapper.sdc",
     "IO_SYNC": 0,
     "FP_PDN_CHECK_NODES": 0,
