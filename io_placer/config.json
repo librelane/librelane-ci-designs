@@ -48,20 +48,44 @@
     "CLOCK_PORT": "user_clock2",
     "CLOCK_NET": "mprj1.clk",
     "CLOCK_PERIOD": "10",
-    "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
-    "VERILOG_FILES_BLACKBOX": [
-        "dir::src/defines.v",
-        "dir::src/user_proj_example.v",
-        "dir::src/user_proj_example2.v"
-    ],
-    "EXTRA_LEFS": [
-        "dir::macros/user_proj_example.lef",
-        "dir::macros/user_proj_example2.lef"
-    ],
-    "EXTRA_GDS_FILES": [
-        "dir::macros/user_proj_example.gds",
-        "dir::macros/user_proj_example2.gds"
-    ],
+    "MACROS": {
+        "user_proj_example" : {
+            "gds": [
+                "dir::macros/user_proj_example.gds"
+            ],
+            "lef": [
+                "dir::macros/user_proj_example.lef"
+            ],
+            "nl": [
+                "dir::src/defines.v",
+                "dir::src/user_proj_example.v"
+            ],
+            "instances": {
+                "mprj1": {
+                    "location": [2000, 2000],
+                    "orientation": "N"
+                }
+            }
+        },
+        "user_proj_example2" : {
+            "gds": [
+                "dir::macros/user_proj_example2.gds"
+            ],
+            "lef": [
+                "dir::macros/user_proj_example2.lef"
+            ],
+            "nl": [
+                "dir::src/defines.v",
+                "dir::src/user_proj_example2.v"
+            ],
+            "instances": {
+                "mprj2": {
+                    "location": [100, 100],
+                    "orientation": "N"
+                }
+            }
+        }
+    },
     "RT_MAX_LAYER": "met4",
     "FP_PDN_CHECK_NODES": 0,
     "SYNTH_ELABORATE_ONLY": 1,
