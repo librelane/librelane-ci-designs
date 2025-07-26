@@ -46,6 +46,11 @@ module inverter (
         .ZN(out),
         .I(in)
     );
+`elsif PDK_ihp_sg13g2
+    sg13g2_inv_1 inv(
+        .Y(out),
+        .A(in)
+    );
 `endif
 
 endmodule
