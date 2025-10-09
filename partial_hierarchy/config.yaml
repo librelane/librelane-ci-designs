@@ -1,0 +1,13 @@
+DESIGN_NAME: partial_hierarchy
+VERILOG_FILES: dir::src/*.sv
+CLOCK_PORT: clk_i
+CLOCK_PERIOD: 10 # 10ns = 100MHz
+
+SYNTH_KEEP_HIERARCHY_INSTANCES:
+- partial_hierarchy/my_shift_reg_0
+- partial_hierarchy/shift_buf
+
+SYNTH_KEEP_HIERARCHY_MODULES:
+- "$paramod\\inverter\\BITS=s32'00000000000000000000000000001000"
+
+SYNTH_KEEP_HIERARCHY_MIN_COST: 1000
