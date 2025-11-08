@@ -1,0 +1,32 @@
+# Design
+DESIGN_NAME           : "flipflop"
+
+# Sources
+VERILOG_FILES         : dir::flipflop.sv
+
+# Clock
+CLOCK_PORT            : "clk_i"
+CLOCK_PERIOD          : 10 # 10ns = 100MHz
+
+# Die area
+FP_SIZING             : "absolute"
+DIE_AREA              : [0, 0, 28, 20]
+PL_TARGET_DENSITY_PCT : 60
+
+# PDN
+PDN_MULTILAYER        : False
+PDN_VOFFSET           : 5
+PDN_VPITCH            : 12.4
+PDN_EXTEND_TO         : boundary
+VDD_PIN               : "VPWR"
+GND_PIN               : "VGND"
+
+# Save area
+BOTTOM_MARGIN_MULT    : 1
+TOP_MARGIN_MULT       : 1
+LEFT_MARGIN_MULT      : 4
+RIGHT_MARGIN_MULT     : 4
+
+# No input/output buffers
+DESIGN_REPAIR_BUFFER_INPUT_PORTS: false
+DESIGN_REPAIR_BUFFER_OUTPUT_PORTS: false
