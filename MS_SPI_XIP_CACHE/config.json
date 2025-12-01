@@ -6,7 +6,7 @@
     ],
     "CLOCK_PORT": "HCLK",
     "CLOCK_PERIOD": 10,
-    "FP_IO_MODE": "annealing",
+    "IO_PIN_PLACEMENT_MODE": "annealing",
     "PL_TARGET_DENSITY_PCT": 75,
     "FP_CORE_UTIL": 55,
     "SYNTH_ABC_BUFFERING": false,
