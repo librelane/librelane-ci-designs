@@ -1,0 +1,8 @@
+DESIGN_NAME: hold_violations_1
+VERILOG_FILES: dir::src/*.sv
+CLOCK_PORT: clk_i
+CLOCK_PERIOD: 10 # 10ns = 100MHz
+
+FP_CORE_UTIL: 30
+
+RSZ_DONT_TOUCH_RX: register.*

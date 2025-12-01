@@ -1,0 +1,20 @@
+meta:
+  version: 3
+  flow: Classic
+  substituting_steps:
+    # Needed because of https://github.com/The-OpenROAD-Project/OpenROAD/issues/8642
+    OpenROAD.Resizer* : null
+
+DESIGN_NAME: hold_violations_2
+VERILOG_FILES: dir::src/*.sv
+CLOCK_PORT: clk_i
+CLOCK_PERIOD: 10 # 10ns = 100MHz
+
+FP_CORE_UTIL: 30
+
+RSZ_DONT_TOUCH_RX: shift_i
+
+# SDC files
+PNR_SDC_FILE: dir::base.sdc
+SIGNOFF_SDC_FILE: dir::base.sdc
+FALLBACK_SDC: dir::base.sdc
