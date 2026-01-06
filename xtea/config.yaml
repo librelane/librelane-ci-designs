@@ -1,0 +1,29 @@
+DESIGN_NAME: xtea
+VERILOG_FILES: dir::src/xtea.v
+SDC_FILE: dir::src/xtea.sdc
+CLOCK_PORT: clock
+SYNTH_ABC_BUFFERING: true
+
+pdk::sky130A:
+  FP_SIZING: absolute
+  DIE_AREA: [0, 0, 300, 300]
+  CLOCK_PERIOD: 26.03
+  scl::sky130_fd_sc_hd:
+    SYNTH_MAX_FANOUT: 6
+    PL_TARGET_DENSITY_PCT: 50
+  scl::sky130_fd_sc_hdll:
+    SYNTH_MAX_FANOUT: 6
+    PL_TARGET_DENSITY_PCT: 40
+  scl::sky130_fd_sc_ls:
+    SYNTH_MAX_FANOUT: 6
+    PL_TARGET_DENSITY_PCT: 40
+  scl::sky130_fd_sc_ms:
+    SYNTH_MAX_FANOUT: 6
+    PL_TARGET_DENSITY_PCT: 40
+  scl::sky130_fd_sc_hvl:
+    SYNTH_MAX_FANOUT: 6
+    PL_TARGET_DENSITY_PCT: 40
+
+pdk::gf180mcuD:
+  PL_TARGET_DENSITY_PCT: 62
+  DIODE_PADDING: 0
