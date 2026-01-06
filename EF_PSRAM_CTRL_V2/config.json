@@ -1,11 +1,12 @@
 {
     "DESIGN_NAME": "EF_PSRAM_CTRL_V2",
     "VERILOG_FILES": [
+        "dir::../EF_IP_UTIL/hdl/ef_util_lib.v",
         "dir::./src/hdl/rtl/EF_PSRAM_CTRL_V2.v"
     ],
     "CLOCK_PORT": "clk",
     "CLOCK_PERIOD": 12.5,
     "FP_IO_MODE": "annealing",
     "FP_IO_MIN_DISTANCE": 2,
-    "FP_CORE_UTIL": 60
+    "FP_CORE_UTIL": 55
 }
