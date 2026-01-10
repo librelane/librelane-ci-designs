@@ -7,6 +7,7 @@
     "SYNTH_EXCLUSION_CELL_LIST": "dir::./no_synth.cells",
     "PNR_EXCLUSION_CELL_LIST": "dir::./drc_exclude.cells",
     "SIGNOFF_SDC_FILE": "dir::../.common/signoff.sdc",
-    "FP_CORE_UTIL": 70,
+    "FP_CORE_UTIL": 55,
+    "PL_TARGET_DENSITY_PCT": 65,
     "GRT_ALLOW_CONGESTION": true
 }
