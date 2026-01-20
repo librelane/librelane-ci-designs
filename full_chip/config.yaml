@@ -138,7 +138,7 @@ EXTRA_LEFS:
 - dir::ip/bondpad_70x70_novias/lef/bondpad_70x70_novias.lef
 
 IGNORE_DISCONNECTED_MODULES:
-- bondpad_70x70
+- bondpad_70x70_novias
 
 # Maximum metal width without slotting: 30um
 PDN_CORE_RING_VWIDTH: 15
