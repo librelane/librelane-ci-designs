@@ -44,5 +44,6 @@
             60,
             60
         ]
-    ]
+    ],
+    "MAGIC_EXT_USE_GDS": true
 }
