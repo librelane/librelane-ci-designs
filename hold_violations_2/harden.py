@@ -65,7 +65,9 @@ def main(
     got_hold_violations = False
     try:
         current_state = step.start(
-            step_dir=os.path.join(__dir__, "runs", run_tag, "xx-checker-holdviolations"),
+            step_dir=os.path.join(
+                __dir__, "runs", run_tag, "xx-checker-holdviolations"
+            ),
         )
     except DeferredStepError as e:
         print(e)
