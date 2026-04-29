@@ -1,5 +1,5 @@
 ## CLOCK CONSTRAINTS
-create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period 15
+create_clock [get_ports $::env(CLOCK_PORT)]  -name $::env(CLOCK_PORT)  -period 20
 set_propagated_clock [get_clocks $::env(CLOCK_PORT)]
 # set_clock_transition 1.5 [get_clocks $::env(CLOCK_PORT)]
 set_driving_cell -lib_cell sky130_fd_sc_hd__clkbuf_4 -pin {X} [get_ports $::env(CLOCK_PORT)]
