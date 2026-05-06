@@ -1,0 +1,161 @@
+meta:
+  version: 3
+  flow: Chip
+  substituting_steps:
+
+    # Magic reports some overlaps which can be ignored
+    Checker.IllegalOverlap: null
+
+    # Disable KLayout DRC
+    #KLayout.DRC: null
+    #Checker.KLayoutDRC: null
+
+    # Disable magic DRC
+    Magic.DRC: null
+    Checker.MagicDRC: null
+
+    # Disable KLayout antenna check
+    #KLayout.Antenna: null
+    #Checker.KLayoutAntenna: null
+
+    # Disable KLayout density check
+    #KLayout.Density: null
+    #Checker.KLayoutDensity: null
+    
+    # Save time
+    #OpenROAD.IRDropReport: null
+    #KLayout.XOR: null
+    #Netgen.LVS: null
+    #Checker.LVS: null
+    
+    # Disable chip finishing
+    KLayout.Antenna: null
+    Checker.KLayoutAntenna: null
+    KLayout.SealRing: null
+    KLayout.Filler: null
+    KLayout.Density: null
+    Checker.KLayoutDensity: null
+
+DESIGN_NAME: chip_top
+VERILOG_FILES:
+- dir::src/chip_top.sv
+- dir::src/chip_core.sv
+
+# Enable plugin for better SystemVerilog support
+# USE_SLANG: True
+
+# Slightly smaller file sizes
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+
+# Specify the pad instances for the padring
+PAD_SOUTH: [
+    # 11 pads
+    "vddio_pads\\[0\\].vddio_pad",
+
+    clock_pad,
+    reset_pad,
+
+    "bidirs\\[0\\].bidir_pad",
+    "bidirs\\[1\\].bidir_pad",
+
+    "vssio_pads\\[0\\].vssio_pad"
+]
+
+PAD_EAST: [
+    # 20 pads
+    "vccd_pads\\[0\\].vccd_pad",
+
+    "bidirs\\[2\\].bidir_pad",
+    "bidirs\\[3\\].bidir_pad",
+    "bidirs\\[4\\].bidir_pad",
+    "bidirs\\[5\\].bidir_pad",
+    
+    "vssd_pads\\[0\\].vssd_pad"
+]
+
+PAD_NORTH: [
+    # 11 pads
+    "vddio_pads\\[1\\].vddio_pad",
+
+    "bidirs\\[9\\].bidir_pad",
+    "bidirs\\[8\\].bidir_pad",
+    "bidirs\\[7\\].bidir_pad",
+    "bidirs\\[6\\].bidir_pad",
+
+    "vssio_pads\\[1\\].vssio_pad"
+]
+
+PAD_WEST: [
+    # 21 pads
+    "vccd_pads\\[1\\].vccd_pad",
+
+    "bidirs\\[13\\].bidir_pad",
+    "bidirs\\[12\\].bidir_pad",
+    "bidirs\\[11\\].bidir_pad",
+    "bidirs\\[10\\].bidir_pad",
+        
+    "vssd_pads\\[1\\].vssd_pad"
+]
+
+# SDC files
+PNR_SDC_FILE: dir::chip_top.sdc
+SIGNOFF_SDC_FILE: dir::chip_top.sdc
+FALLBACK_SDC: dir::chip_top.sdc
+
+# Power / ground nets
+VDD_NETS:
+- VCCD
+GND_NETS:
+- VSSD
+
+# Clock
+CLOCK_PORT: clk_PAD
+CLOCK_NET: clock_pad/IN
+
+CLOCK_PERIOD: 20
+
+# Floorplanning
+FP_SIZING: absolute
+
+# Die area without sealring
+DIE_AREA: [0, 0, 1600, 1600]
+CORE_AREA: [250, 250, "expr::$DIE_AREA[2] - 250", "expr::$DIE_AREA[3] - 250"]
+
+# TODO: just for testing
+FP_OBSTRUCTIONS:
+- [300, 300, "expr::$DIE_AREA[2] - 300", "expr::$DIE_AREA[3] - 300"]
+
+# Increase for more logic
+# on your die
+PL_TARGET_DENSITY_PCT: 10
+GRT_ALLOW_CONGESTION: true
+
+# PDN
+PDN_CORE_RING: True
+
+IGNORE_DISCONNECTED_MODULES:
+- sky130_fd_io__top_power_hvc_wpad
+- sky130_fd_io__top_ground_hvc_wpad
+- sky130_fd_io__top_power_lvc_wpad
+- sky130_fd_io__top_ground_lvc_wpad
+
+# Maximum metal width without slotting: 30um
+PDN_CORE_RING_VWIDTH: 15
+PDN_CORE_RING_HWIDTH: 15
+# Ensure minimum spacing for long metals
+PDN_CORE_RING_VSPACING: 5
+PDN_CORE_RING_HSPACING: 5
+
+PDN_CORE_VERTICAL_LAYER: met2
+PDN_CORE_HORIZONTAL_LAYER: met3
+
+PDN_CORE_RING_CONNECT_TO_PADS: True
+PDN_CORE_RING_CONNECT_TO_PAD_LAYERS: [met3]
+PDN_ENABLE_PINS: False # xxx does not contain any terminals
+ERROR_ON_PDN_VIOLATIONS: False # to prevent false positive error
+
+# Because we have multiple power pads for one power domain
+MAGIC_EXT_UNIQUE: notopports
+
+# Due to https://github.com/The-OpenROAD-Project/OpenROAD/issues/10256
+ERROR_ON_KLAYOUT_DRC: False
