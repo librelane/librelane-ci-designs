@@ -154,8 +154,5 @@ PDN_CORE_RING_CONNECT_TO_PAD_LAYERS: [met3]
 PDN_ENABLE_PINS: False # xxx does not contain any terminals
 ERROR_ON_PDN_VIOLATIONS: False # to prevent false positive error
 
-# Because we have multiple power pads for one power domain
-MAGIC_EXT_UNIQUE: notopports
-
 # Due to https://github.com/The-OpenROAD-Project/OpenROAD/issues/10256
 ERROR_ON_KLAYOUT_DRC: False

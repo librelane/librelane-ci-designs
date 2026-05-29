@@ -13,7 +13,7 @@ set_output_delay 0.0000 -clock [get_clocks {__VIRTUAL_CLK__}] -add_delay [get_po
 set_false_path -from [get_ports {one}]
 set_false_path -from [get_ports {zero}]
 
-create_clock -name CLK -period 5 [get_pins PoR.ROSC_CLKBUF_1/X]
+create_clock -name CLK -period 6 [get_pins PoR.ROSC_CLKBUF_1/X]
 set CLK_500kHz_pin [get_pins -of_objects {PoR.clk_div[8]} -filter lib_pin_name==Q]
 create_clock -name CLK_500kHz -period 200 $CLK_500kHz_pin
 
