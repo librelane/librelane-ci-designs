@@ -13,7 +13,7 @@ pdk::sky130A:
     PL_TARGET_DENSITY_PCT: 50
   scl::sky130_fd_sc_hdll:
     SYNTH_MAX_FANOUT: 6
-    PL_TARGET_DENSITY_PCT: 40
+    PL_TARGET_DENSITY_PCT: 38
   scl::sky130_fd_sc_ls:
     SYNTH_MAX_FANOUT: 6
     PL_TARGET_DENSITY_PCT: 40
