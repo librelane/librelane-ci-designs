@@ -120,6 +120,7 @@ FP_SIZING: absolute
 # Die area without sealring
 DIE_AREA: [0, 0, 1600, 1600]
 CORE_AREA: [250, 250, "expr::$DIE_AREA[2] - 250", "expr::$DIE_AREA[3] - 250"]
+PAD_SPACING_MULTIPLE: 2.0
 
 # TODO: just for testing
 FP_OBSTRUCTIONS:
