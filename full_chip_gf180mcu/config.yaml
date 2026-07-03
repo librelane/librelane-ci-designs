@@ -1,0 +1,153 @@
+meta:
+  version: 3
+  flow: Chip
+  substituting_steps:
+
+    # Magic reports some overlaps which can be ignored
+    Checker.IllegalOverlap: null
+
+    # Disable KLayout DRC
+    KLayout.DRC: null
+    Checker.KLayoutDRC: null
+
+    # Disable magic DRC
+    Magic.DRC: null
+    Checker.MagicDRC: null
+
+    # Disable KLayout antenna check
+    #KLayout.Antenna: null
+    #Checker.KLayoutAntenna: null
+
+    # Disable KLayout density check
+    #KLayout.Density: null
+    #Checker.KLayoutDensity: null
+    
+    # Save time
+    #OpenROAD.IRDropReport: null
+    #KLayout.XOR: null
+    #Netgen.LVS: null
+    #Checker.LVS: null
+
+DESIGN_NAME: chip_top
+VERILOG_FILES:
+- dir::src/chip_top.sv
+- dir::src/chip_core.sv
+
+# Enable plugin for better SystemVerilog support
+# USE_SLANG: True
+
+# Slightly smaller file sizes
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+
+# Specify the pad instances for the padring
+PAD_SOUTH: [
+    clk_pad,
+    rst_n_pad,
+
+    "bidirs\\[0\\].pad",
+    "bidirs\\[1\\].pad",
+    "bidirs\\[2\\].pad",
+    "bidirs\\[3\\].pad",
+    "bidirs\\[4\\].pad",
+    "bidirs\\[5\\].pad",
+    "bidirs\\[6\\].pad",
+    "bidirs\\[7\\].pad"
+]
+
+PAD_EAST: [
+    "analogs\\[0\\].pad",
+    "analogs\\[1\\].pad",
+    "analogs\\[2\\].pad",
+    "analogs\\[3\\].pad",
+    "analogs\\[4\\].pad",
+    "analogs\\[5\\].pad",
+    "analogs\\[6\\].pad",
+    "analogs\\[7\\].pad",
+    
+    "dvdd_pads\\[1\\].pad",
+    "dvss_pads\\[1\\].pad"
+]
+
+PAD_NORTH: [
+    "bidirs\\[15\\].pad",
+    "bidirs\\[14\\].pad",
+    "bidirs\\[13\\].pad",
+    "bidirs\\[12\\].pad",
+    "bidirs\\[11\\].pad",
+    "bidirs\\[10\\].pad",
+    "bidirs\\[9\\].pad",
+    "bidirs\\[8\\].pad",
+    
+    "dvdd_pads\\[0\\].pad",
+    "dvss_pads\\[0\\].pad"
+]
+
+PAD_WEST: [
+    "inputs\\[9\\].pad",
+    "inputs\\[8\\].pad",
+    "inputs\\[7\\].pad",
+    "inputs\\[6\\].pad",
+    "inputs\\[5\\].pad",
+    "inputs\\[4\\].pad",
+    "inputs\\[3\\].pad",
+    "inputs\\[2\\].pad",
+    "inputs\\[1\\].pad",
+    "inputs\\[0\\].pad"
+]
+
+# SDC files
+PNR_SDC_FILE: dir::chip_top.sdc
+SIGNOFF_SDC_FILE: dir::chip_top.sdc
+FALLBACK_SDC: dir::chip_top.sdc
+
+# Power / ground nets
+VDD_NETS:
+- VDD
+GND_NETS:
+- VSS
+
+# Clock
+CLOCK_PORT: clk_PAD
+CLOCK_NET: clk_pad/p2c
+CLOCK_PERIOD: 20
+
+# Floorplanning
+FP_SIZING: absolute
+# 3880umx5070um including 26um
+# for the sealring on all sides
+DIE_AREA: [0, 0, 1600, 1600]
+CORE_AREA: [442, 442, "expr::$DIE_AREA[2] - 442", "expr::$DIE_AREA[3] - 442"]
+
+# Increase for more logic
+# on your die
+PL_TARGET_DENSITY_PCT: 4
+GRT_ALLOW_CONGESTION: true
+
+IGNORE_DISCONNECTED_MODULES:
+- gf180mcu_fd_io__bi_24t
+
+# PDN - Straps
+PDN_VWIDTH: 5
+PDN_HWIDTH: 5
+PDN_VSPACING: 1
+PDN_HSPACING: 1
+PDN_VPITCH: 75
+PDN_HPITCH: 75
+
+# PDN - Core ring
+PDN_CORE_RING: True
+# Maximum metal width without slotting: 30um
+PDN_CORE_RING_VWIDTH: 25
+PDN_CORE_RING_HWIDTH: 25
+PDN_CORE_RING_CONNECT_TO_PADS: True
+PDN_ENABLE_PINS: False
+PDN_CORE_VERTICAL_LAYER: Metal2
+PDN_CORE_HORIZONTAL_LAYER: Metal3
+
+# Due to OpenROAD bug
+# https://github.com/The-OpenROAD-Project/OpenROAD/issues/8229
+#PL_TIME_DRIVEN: False
+#PL_ROUTABILITY_DRIVEN: False
+
+# Because we have multiple power pads for one power domain
+MAGIC_EXT_UNIQUE: notopports
