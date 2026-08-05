@@ -15,6 +15,7 @@
             "OpenROAD.DetailedRouting",
             "OpenROAD.FillInsertion",
             "Magic.StreamOut",
+            "KLayout.StreamOut",
             "Magic.DRC",
             "Checker.MagicDRC",
             "Magic.SpiceExtraction",
