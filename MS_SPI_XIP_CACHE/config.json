@@ -5,7 +5,7 @@
         "dir::./src/hdl/rtl/bus_wrappers/MS_SPI_XIP_CACHE_ahbl.v"
     ],
     "CLOCK_PORT": "HCLK",
-    "CLOCK_PERIOD": 18,
+    "CLOCK_PERIOD": 20,
     "IO_PIN_PLACEMENT_MODE": "annealing",
     "PL_TARGET_DENSITY_PCT": 65,
     "FP_CORE_UTIL": 45,
