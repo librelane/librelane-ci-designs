@@ -8,7 +8,7 @@
         "SYNTH_MAX_FANOUT": 6,
         "CLOCK_PERIOD": 12.55,
         "scl::sky130_fd_sc_hd": {
-            "CLOCK_PERIOD": 15,
+            "CLOCK_PERIOD": 18,
             "SYNTH_STRATEGY": "DELAY 0"
         }
     },

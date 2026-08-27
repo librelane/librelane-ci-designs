@@ -39,5 +39,6 @@
   "FP_DEF_TEMPLATE": "dir::tt_block_1x1_pg.def",
   "VDD_PIN": "VPWR",
   "GND_PIN": "VGND",
-  "RT_MAX_LAYER": "met4"
+  "RT_MAX_LAYER": "met4",
+  "SYNTH_STRATEGY": "AREA 0"
 }
