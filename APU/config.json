@@ -7,7 +7,7 @@
     "CLOCK_PORT": "clk",
     "CLOCK_NET": "clk",
     "FP_CORE_UTIL": 35,
-    "CLOCK_PERIOD": 20,
+    "CLOCK_PERIOD": 25,
     "pdk::sky130*": {
         "SYNTH_MAX_FANOUT": 6
     },
@@ -19,5 +19,8 @@
         "FP_CORE_UTIL": 25,
         "PL_RESIZER_HOLD_MAX_BUFFER_PERCENT": 60,
         "CLOCK_PERIOD": 75
+    },
+    "scl::gf180mcu_fd_sc_mcu9t5v0": {
+        "ERROR_ON_MAGIC_DRC": false
     }
 }

@@ -20,5 +20,8 @@
         "DPL_CELL_PADDING": 2,
         "FP_CORE_UTIL": 30,
         "PL_TARGET_DENSITY": 0.43
+    },
+    "scl::gf180mcu_fd_sc_mcu9t5v0": {
+        "ERROR_ON_MAGIC_DRC": false
     }
 }

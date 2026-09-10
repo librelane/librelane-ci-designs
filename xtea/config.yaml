@@ -4,6 +4,8 @@ SDC_FILE: dir::src/xtea.sdc
 CLOCK_PORT: clock
 SYNTH_ABC_BUFFERING: true
 
+SYNTH_STRATEGY: "AREA 0"
+
 pdk::sky130A:
   FP_SIZING: absolute
   DIE_AREA: [0, 0, 300, 300]
