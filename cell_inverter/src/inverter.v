@@ -51,6 +51,11 @@ module inverter (
         .Y(out),
         .A(in)
     );
+`elsif PDK_ihp_sg13cmos5l
+    sg13cmos5l_inv_1 inv(
+        .Y(out),
+        .A(in)
+    );
 `endif
 
 endmodule
