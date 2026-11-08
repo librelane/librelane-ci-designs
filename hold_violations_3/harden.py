@@ -86,6 +86,8 @@ def main(
         "PDN_VPITCH": 15,
         "FP_MACRO_HORIZONTAL_HALO": 3.5,
         "FP_MACRO_VERTICAL_HALO": 3.5,
+        "PDN_HORIZONTAL_HALO": 3.5,
+        "PDN_VERTICAL_HALO": 3.5,
         "VDD_PIN": "VPWR",
         "GND_PIN": "VGND",
         # Save area
