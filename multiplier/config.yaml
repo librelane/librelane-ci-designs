@@ -1,0 +1,8 @@
+DESIGN_NAME: multiplier
+VERILOG_FILES:
+- dir::src/*.sv
+
+# dont specify a clock port:
+# this is a combinatorial design
+#CLOCK_PORT: clk
+CLOCK_PERIOD: 100
